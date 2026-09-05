@@ -130,6 +130,7 @@ export default function Hero() {
             {hero.cta.map((cta) => (
               <Button
                 key={cta.label}
+                to={cta.to}
                 href={cta.href}
                 variant={cta.variant}
                 external={cta.external}

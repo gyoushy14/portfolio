@@ -29,13 +29,13 @@ const portfolio = {
   ],
 
   navLinks: [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'education', label: 'Education' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Home', to: '/#home' },
+    { id: 'about', label: 'About', to: '/#about' },
+    { id: 'skills', label: 'Skills', to: '/#skills' },
+    { id: 'experience', label: 'Experience', to: '/#experience' },
+    { id: 'projects', label: 'Projects', to: '/projects' },
+    { id: 'education', label: 'Education', to: '/#education' },
+    { id: 'contact', label: 'Contact', to: '/#contact' },
   ],
 
   hero: {
@@ -47,10 +47,9 @@ const portfolio = {
         href: '/Mahmoud-Mohamed-CV.pdf',
         icon: 'Download',
         variant: 'primary',
-        external: true,
         download: true,
       },
-      { label: 'View Projects', href: '#projects', icon: 'Code', variant: 'outline' },
+      { label: 'View Projects', to: '/projects', icon: 'Code', variant: 'outline' },
       { label: 'Contact Me', href: '#contact', icon: 'Mail', variant: 'outline' },
     ],
     terminal: {
@@ -247,6 +246,25 @@ const portfolio = {
       eyebrow: 'Projects',
       title: 'Things I have built',
       description: 'End-to-end backends — from auth to deployment-ready config.',
+      viewAll: { label: 'View all projects', to: '/projects' },
+    },
+    projectsPage: {
+      eyebrow: 'My work',
+      title: 'All projects',
+      description:
+        'A closer look at the systems I have planned, built, and shipped end to end.',
+    },
+    notFound: {
+      eyebrow: 'Error 404',
+      title: 'Page not found',
+      description: "The page you are looking for doesn't exist or has been moved.",
+      backLabel: 'Back to home',
+    },
+    serverError: {
+      eyebrow: 'Error',
+      title: 'Something went wrong',
+      description: 'An unexpected error occurred. Please try again.',
+      backLabel: 'Back to home',
     },
     education: {
       eyebrow: 'Education',

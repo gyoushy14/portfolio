@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const variants = {
   primary:
     'bg-emerald-500 text-slate-900 hover:bg-emerald-400 focus-visible:ring-emerald-500/50 shadow-lg shadow-emerald-500/20',
@@ -20,6 +22,7 @@ export default function Button({
   className = '',
   external = false,
   download = false,
+  to,
   ...props
 }) {
   const classNames = [
@@ -30,6 +33,14 @@ export default function Button({
   ]
     .filter(Boolean)
     .join(' ')
+
+  if (to) {
+    return (
+      <Link to={to} className={classNames} {...props}>
+        {children}
+      </Link>
+    )
+  }
 
   const extraProps = {}
   if (external) extraProps.target = '_blank'
