@@ -57,11 +57,8 @@ export default function Skills() {
           <motion.div
             key={active}
             aria-busy={isPending}
-            className={[
-              'space-y-10 transition-opacity duration-300 ease-in-out',
-              isPending ? 'opacity-60' : 'opacity-100',
-            ].join(' ')}
-            animate={{ y: 0 }}
+            className="space-y-10"
+            animate={{ opacity: isPending ? 0.6 : 1, y: 0 }}
             initial={{ opacity: 0, y: 12 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}

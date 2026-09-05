@@ -41,18 +41,20 @@ export default function ProjectCard({ project }) {
           ))}
         </div>
 
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 transition-colors duration-300 ease-in-out hover:text-emerald-500 dark:text-emerald-400"
-        >
-          View on GitHub
-          <ArrowUpRight
-            size={15}
-            className="transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </a>
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 transition-colors duration-300 ease-in-out hover:text-emerald-500 dark:text-emerald-400"
+          >
+            View on GitHub
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        )}
       </Card>
     </motion.div>
   )

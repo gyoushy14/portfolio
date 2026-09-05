@@ -40,7 +40,7 @@ function Stat({ value, label }) {
 }
 
 export default function About() {
-  const { profile, stats, sections } = portfolio
+  const { profile, facts, stats, sections } = portfolio
 
   return (
     <section id="about" className="bg-white py-24 dark:bg-slate-800/40">
@@ -75,7 +75,7 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             className="grid grid-cols-1 gap-4 sm:grid-cols-2"
           >
-            {profile.facts.map((fact) => (
+            {facts.map((fact) => (
               <FactCard
                 key={fact.label}
                 icon={fact.icon}

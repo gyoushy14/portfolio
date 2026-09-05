@@ -135,6 +135,7 @@ export default function Hero() {
                 variant={cta.variant}
                 external={cta.external}
                 download={cta.download}
+                aria-label={cta.ariaLabel}
               >
                 {cta.icon && <Icon name={cta.icon} size={18} />}
                 {cta.label}

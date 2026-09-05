@@ -1,3 +1,8 @@
+export const personalInfo = {
+  cvPath: '/Mahmoud_Mohamed_CV.pdf',
+  cvFileName: 'Mahmoud_Mohamed_CV.pdf',
+}
+
 const portfolio = {
   profile: {
     name: 'Mahmoud Mohamed',
@@ -9,7 +14,7 @@ const portfolio = {
     summary:
       'Backend Developer with 2+ years of hands-on experience designing and shipping scalable REST APIs and server-side systems using Laravel, Node.js, and MongoDB. Production experience across healthcare (MedicaSpace) and commercial platforms, with strong command of clean architecture, Design Patterns, and database optimization.',
     email: 'elgyuoshy@gmail.com',
-    phone: '+201030897704',
+    phone: ['+201030897704' , ' || +201559469990'],
     location: 'Suez, Egypt',
     militaryStatus: 'Exempt from military service',
   },
@@ -44,10 +49,11 @@ const portfolio = {
     cta: [
       {
         label: 'Download CV',
-        href: '/Mahmoud-Mohamed-CV.pdf',
+        href: personalInfo.cvPath,
         icon: 'Download',
         variant: 'primary',
-        download: true,
+        download: personalInfo.cvFileName,
+        ariaLabel: "Download Mahmoud Mohamed's CV",
       },
       { label: 'View Projects', to: '/projects', icon: 'Code', variant: 'outline' },
       { label: 'Contact Me', href: '#contact', icon: 'Mail', variant: 'outline' },
@@ -178,9 +184,9 @@ const portfolio = {
       title: 'MedicaSpace (Production)',
       description:
         'Multi-sector medical networking platform serving C2C, B2B, and B2C use cases. Built with Laravel Modules and Service/Repository architecture at Soume Computing.',
-      stack: ['Laravel', 'PHP', 'MySQL'],
+      stack: ['Laravel', 'PHP', 'MySQL', 'Redis' , 'Unit testing' ," SOLID principles"],
       period: 'Dec 2024 – Present',
-      githubUrl: 'https://github.com/gyoushy14',
+      githubUrl: null,
     },
   ],
 

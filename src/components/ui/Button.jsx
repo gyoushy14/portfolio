@@ -43,9 +43,11 @@ export default function Button({
   }
 
   const extraProps = {}
-  if (external) extraProps.target = '_blank'
-  if (external) extraProps.rel = 'noopener noreferrer'
-  if (download) extraProps.download = true
+  if (external || download) {
+    extraProps.target = '_blank'
+    extraProps.rel = 'noopener noreferrer'
+  }
+  if (download) extraProps.download = download
 
   return (
     <a className={classNames} {...props} {...extraProps}>

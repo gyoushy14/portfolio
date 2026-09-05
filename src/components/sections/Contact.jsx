@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Send } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { AlertCircle, CheckCircle, Loader2, Send } from 'lucide-react'
 import portfolio from '../../data/portfolio'
 import Card from '../ui/Card'
 import Icon from '../ui/Icon'
 import SectionTitle from '../ui/SectionTitle'
+import { useContactForm } from '../../hooks/useContactForm'
 
 function ContactChannel({ icon, label, value, href, external = false }) {
   const content = (
@@ -37,24 +37,17 @@ function ContactChannel({ icon, label, value, href, external = false }) {
   )
 }
 
-const initialState = { name: '', email: '', message: '' }
-
 export default function Contact() {
   const { profile, links, sections, socials } = portfolio
-  const [form, setForm] = useState(initialState)
-  const [sent, setSent] = useState(false)
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSent(true)
-    setForm(initialState)
-    setTimeout(() => setSent(false), 4000)
-  }
+  const {
+    formRef,
+    isLoading,
+    isSuccess,
+    isError,
+    errorMessage,
+    cooldown,
+    sendEmail,
+  } = useContactForm()
 
   const inputClass =
     'w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder-slate-400 transition-colors duration-300 ease-in-out focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder-slate-500'
@@ -124,40 +117,36 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
           >
             <Card className="p-6 sm:p-8">
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={sendEmail} className="space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label
-                      htmlFor="name"
+                      htmlFor="from_name"
                       className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                       Name
                     </label>
                     <input
-                      id="name"
-                      name="name"
+                      id="from_name"
+                      name="from_name"
                       type="text"
                       required
-                      value={form.name}
-                      onChange={handleChange}
                       placeholder="Your name"
                       className={inputClass}
                     />
                   </div>
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="from_email"
                       className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300"
                     >
                       Email
                     </label>
                     <input
-                      id="email"
-                      name="email"
+                      id="from_email"
+                      name="from_email"
                       type="email"
                       required
-                      value={form.email}
-                      onChange={handleChange}
                       placeholder="you@example.com"
                       className={inputClass}
                     />
@@ -176,8 +165,6 @@ export default function Contact() {
                     name="message"
                     required
                     rows={5}
-                    value={form.message}
-                    onChange={handleChange}
                     placeholder="Tell me about your project..."
                     className={`${inputClass} resize-none`}
                   />
@@ -185,23 +172,71 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-emerald-500/20 transition-all duration-300 ease-in-out hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-900 active:scale-[0.99] sm:w-auto"
+                  disabled={isLoading || cooldown > 0}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-emerald-500/20 transition-all duration-300 ease-in-out hover:bg-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none dark:focus-visible:ring-offset-slate-900 active:scale-[0.99] sm:w-auto"
                 >
-                  <Send size={16} />
-                  Send message
+                  {isLoading ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : cooldown > 0 ? (
+                    `You can send another message in ${cooldown}s`
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
                 </button>
               </form>
 
-              {sent && (
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-700 dark:text-emerald-300"
-                  role="status"
-                >
-                  Thanks! Your message has been prepared.
-                </motion.p>
-              )}
+              <AnimatePresence>
+                {isSuccess && (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    className="mt-4 inline-flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-700 dark:text-emerald-300"
+                    role="status"
+                  >
+                    <CheckCircle size={16} className="shrink-0" />
+                    <span>
+                      Your message has been sent! I&apos;ll get back to you soon.
+                    </span>
+                  </motion.div>
+                )}
+
+                {isError && (
+                  <motion.div
+                    key="error"
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                    className="mt-4 flex items-start gap-2 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm font-medium text-red-700 dark:text-red-300"
+                    role="alert"
+                  >
+                    <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                    <span>
+                      Something went wrong. Please try email me directly at{' '}
+                      <a
+                        href="mailto:elgyuoshy@gmail.com"
+                        className="underline underline-offset-2 hover:no-underline"
+                      >
+                        elgyuoshy@gmail.com
+                      </a>
+                      {errorMessage && errorMessage !== 'Unexpected error occurred' && (
+                        <span className="mt-1 block text-xs opacity-80">
+                          ({errorMessage})
+                        </span>
+                      )}
+                    </span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Card>
           </motion.div>
         </div>
