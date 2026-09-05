@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var theme = stored === 'light' || stored === 'dark' ? stored : 'dark'
+          if (theme === 'dark') document.documentElement.classList.add('dark')
+          else document.documentElement.classList.remove('dark')
+        } catch (e) {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Mahmoud Mohamed | Backend Developer — Laravel &amp; Node.js</title>
+    <meta
+      name="description"
+      content="Backend Developer specializing in scalable REST APIs with Laravel and Node.js. Based in Suez, Egypt. Building reliable, production-grade backend systems."
+    />
+    <meta name="author" content="Mahmoud Mohamed (Mahmoud Elgyuoshi)" />
+    <meta
+      name="keywords"
+      content="Mahmoud Mohamed, Backend Developer, Laravel, Node.js, REST API, Express, MongoDB, MySQL, Suez, Egypt"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mahmoud Mohamed | Backend Developer — Laravel &amp; Node.js" />
+    <meta
+      property="og:description"
+      content="Building scalable systems, clean APIs, and reliable backends with Laravel and Node.js. Based in Suez, Egypt."
+    />
+    <meta property="og:site_name" content="Mahmoud Mohamed Portfolio" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Mahmoud Mohamed | Backend Developer" />
+    <meta
+      name="twitter:description"
+      content="Building scalable systems, clean APIs, and reliable backends with Laravel and Node.js."
+    />
+
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
