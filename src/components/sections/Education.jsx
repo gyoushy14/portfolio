@@ -33,7 +33,23 @@ function EducationItem({ item }) {
   )
 }
 
+const CERT_COLORS = {
+  orange: 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
+  default: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
+}
+
 function CertificationCard({ cert }) {
+  const title = cert.title ?? cert.name
+  const descriptor =
+    cert.type === 'online'
+      ? cert.credit
+        ? 'Online Credit Course'
+        : 'Online Non-Credit Course'
+      : cert.type
+        ? 'On-Campus Course'
+        : null
+  const colorStyle = CERT_COLORS[cert.color] ?? CERT_COLORS.default
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,17 +58,31 @@ function CertificationCard({ cert }) {
       transition={{ duration: 0.4, ease: 'easeOut' }}
       className="h-full"
     >
-      <Card className="flex h-full items-center gap-4 p-5 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+      <Card className="flex h-full items-start gap-4 p-5 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5">
+        <span
+          className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${colorStyle}`}
+        >
           <Icon name={cert.icon} size={20} />
         </span>
-        <div>
+        <div className="min-w-0 flex-1">
           <h4 className="text-sm font-semibold leading-snug text-slate-900 dark:text-white">
-            {cert.name}
+            {title}
           </h4>
-          <p className="mt-0.5 text-xs font-medium text-slate-400 dark:text-slate-500">
-            {cert.issuer}
-          </p>
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span className="inline-flex items-center rounded-md bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+              {cert.issuer}
+            </span>
+            {cert.platform && (
+              <span className="text-xs font-medium text-slate-400 dark:text-slate-500">
+                via {cert.platform}
+              </span>
+            )}
+          </div>
+          {descriptor && (
+            <p className="mt-1 text-xs font-medium text-slate-400 dark:text-slate-500">
+              {descriptor}
+            </p>
+          )}
         </div>
       </Card>
     </motion.div>
@@ -89,7 +119,7 @@ export default function Education() {
             </h3>
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {certifications.map((cert) => (
-                <li key={cert.name} className="h-full">
+                <li key={cert.id ?? cert.name} className="h-full">
                   <CertificationCard cert={cert} />
                 </li>
               ))}
