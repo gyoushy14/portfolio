@@ -164,7 +164,14 @@ const portfolio = {
   ],
 
   projects: [
-
+    {
+      title: 'E-Commerce Backend',
+      description:
+        'Modular REST API with JWT auth, product management, order workflows, input validation, and error-handling middleware following OOP and MVC principles.',
+      stack: ['Node.js', 'Express', 'MongoDB'],
+      period: 'Aug – Sep 2024',
+      githubUrl: 'https://github.com/gyoushy14',
+    },
     {
       title: 'Freelance Backend System',
       description:
