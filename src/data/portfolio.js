@@ -87,7 +87,7 @@ const portfolio = {
 
   stats: [
     { value: '2+', label: 'Years of experience' },
-    { value: '7', label: 'Projects shipped' },
+    { value: '8', label: 'Projects shipped' },
     { value: '5', label: 'Companies worked with' },
     { value: '12', label: 'Certifications' },
   ],
@@ -105,6 +105,9 @@ const portfolio = {
         'RESTful APIs',
         'JWT Auth',
         'Passport.js',
+        'RBAC',
+        'Webhooks (HMAC)',
+        'Rate Limiting',
         'PHP',
         'WebSockets',
       ],
@@ -121,6 +124,8 @@ const portfolio = {
         'Mongoose',
         'NoSQL',
         'Query Optimization',
+        'Keyset Pagination',
+        'Transactions',
         'Migrations',
       ],
     },
@@ -136,6 +141,7 @@ const portfolio = {
         'Clean Code',
         'SOLID',
         'Event-Driven',
+        'Idempotency',
       ],
     },
     {
@@ -154,6 +160,7 @@ const portfolio = {
         'Agile',
         'Unit Testing',
         'Jest',
+        'Supertest',
         'JMeter',
         'PM2',
         'Docker',
@@ -178,7 +185,7 @@ const portfolio = {
         'Developing and maintaining backend systems and RESTful APIs, applying clean architecture and Design Patterns.',
     },
     {
-      period: 'Dec 2024 – Sep 2026',
+      period: 'Dec 2024 – Present',
       role: 'Laravel Backend Developer',
       company: 'MedicaSpace',
       companyUrl: null,
@@ -245,6 +252,40 @@ const portfolio = {
       featured: true,
     },
     {
+      id: 'sahl-ecommerce-system',
+      title: 'Ecommerce System',
+      category: 'Backend',
+      type: 'Personal Project',
+      period: 'Sep 2026',
+      description:
+        'Production-style ecommerce API with JWT auth and refresh rotation, RBAC, a payment-gateway abstraction with idempotency, HMAC-verified webhooks, and transactional order placement — Dockerized, migration-managed, and covered by 99 unit and e2e tests.',
+      highlights: [
+        'JWT access + refresh token rotation, argon2 hashing, role-based guards (user / manager / admin)',
+        'Idempotent payments with reconciliation; HMAC-SHA256 webhooks with event de-duplication',
+        'Transactional orders with price snapshots, a state machine, and deadlock retry',
+        'Keyset (cursor) pagination with filters in a single query — no N+1',
+        'Helmet, CORS, throttling, Joi env validation, correlation IDs and a uniform error envelope',
+        'Swagger docs, Docker multi-stage build, Postgres 16, 50 unit + 49 e2e tests',
+      ],
+      tech: [
+        'Nest.js',
+        'TypeScript',
+        'PostgreSQL',
+        'TypeORM',
+        'Passport JWT',
+        'argon2',
+        'Joi',
+        'Helmet',
+        'Swagger',
+        'Docker',
+        'Jest',
+        'Supertest',
+      ],
+      github: 'https://github.com/gyoushy14/sahl-ecommerce-api',
+      live: null,
+      featured: true,
+    },
+    {
       id: 'ecommerce-backend',
       title: 'E-Commerce Backend',
       category: 'Backend',
@@ -286,7 +327,7 @@ const portfolio = {
       title: 'MedicaSpace (Production)',
       category: 'Backend',
       type: 'Professional Work',
-      period: 'Dec 2024 – Sep 2026',
+      period: 'Dec 2024 – Present',
       description:
         'Multi-sector medical networking platform serving C2C, B2B, and B2C use cases. Built and maintained its RESTful APIs with Laravel using a Service & Repository architecture.',
       highlights: [
@@ -296,7 +337,7 @@ const portfolio = {
       ],
       tech: ['Laravel', 'PHP', 'MySQL', 'Redis', 'Unit Testing', 'SOLID'],
       github: null,
-      live: null,
+      live: 'https://www.medicaspace.com/',
       featured: true,
     },
     {
@@ -548,5 +589,8 @@ const portfolio = {
     },
   },
 }
+
+// Featured projects first; Array.prototype.sort is stable, so authored order is kept within each group.
+portfolio.projects.sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
 
 export default portfolio
