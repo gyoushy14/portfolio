@@ -33,9 +33,11 @@ export default function Experience() {
                 <Briefcase size={13} className="text-emerald-500" />
               </span>
 
-              <div className="mb-1 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <Badge tone="accent">{job.period}</Badge>
-              </div>
+              {job.period && (
+                <div className="mb-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <Badge tone="accent">{job.period}</Badge>
+                </div>
+              )}
 
               <h3 className="mt-2 text-xl font-bold text-slate-900 dark:text-white">
                 {job.role}

@@ -1,6 +1,7 @@
 import {
   Award,
   Bot,
+  Cloud,
   Briefcase,
   Code,
   Database,
@@ -23,6 +24,7 @@ import BrandIcon from './BrandIcon'
 const iconMap = {
   Award,
   Bot,
+  Cloud,
   Briefcase,
   Code,
   Database,
