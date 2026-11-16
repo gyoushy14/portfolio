@@ -10,22 +10,22 @@
     <meta charset="UTF-8" />
     <title>Mahmoud Mohamed - CV</title>
     <style>
-      @page { size: A4; margin: 10mm 14mm; }
+      @page { size: A4; margin: 9mm 13mm; }
       * { box-sizing: border-box; }
       body {
         margin: 0;
         font-family: Lato, Carlito, Calibri, 'Segoe UI', Arial, sans-serif;
-        font-size: 9.6pt;
+        font-size: 9.2pt;
         line-height: 1.3;
         color: #111;
       }
       a { color: inherit; }
-      header { text-align: center; margin-bottom: 8pt; }
+      header { text-align: center; margin-bottom: 4pt; }
       h1 { margin: 0; font-size: 24pt; font-weight: 800; letter-spacing: 0.5pt; }
       .headline { font-size: 12pt; margin: 2pt 0; }
       .contact { font-size: 9pt; }
       h2 {
-        margin: 9pt 0 4pt;
+        margin: 7pt 0 3pt;
         padding-bottom: 2pt;
         border-bottom: 1px solid #111;
         font-size: 10.5pt;
@@ -33,7 +33,7 @@
         text-transform: uppercase;
       }
       p { margin: 0; }
-      .entry { margin-top: 5pt; }
+      .entry { margin-top: 4pt; }
       .row { display: flex; justify-content: space-between; gap: 12pt; }
       .row .date { font-style: italic; font-size: 9pt; white-space: nowrap; }
       .title { font-weight: 700; }
@@ -80,15 +80,14 @@
       <ul>
         <li>Developing and maintaining backend systems and RESTful APIs, applying clean architecture and Design Patterns.</li>
         <li>
-          To Nine Party (to-nine.sa): Laravel backend for a Saudi events marketplace — bookings, orders, wallet payments,
-          installments and coupons; removed N+1 queries and reduced repeated SQL on catalog, cart and order APIs.
+          Backend for <a href="https://to-nine.sa/">To Nine Party</a>, a Saudi events marketplace (see Projects).
         </li>
         <li>LMS platform: Nest.js, TypeScript and TypeORM on PostgreSQL with JWT auth, Swagger docs and Jest tests.</li>
       </ul>
     </div>
     <div class="entry">
       <div class="row">
-        <p><span class="title">Laravel Backend Developer</span> · MedicaSpace</p>
+        <p><span class="title">Laravel Backend Developer</span> · <a href="https://www.medicaspace.com/">MedicaSpace</a></p>
         <p class="date">Dec 2024 – Present</p>
       </div>
       <ul>
@@ -106,6 +105,41 @@
     </div>
 
     <h2>Projects</h2>
+    <div class="entry">
+      <div class="row">
+        <p><span class="title">Laravel · MySQL · Redis</span> · <a href="https://to-nine.sa/">To Nine Party</a> — Events Marketplace</p>
+        <p class="date">Oct 2026 – Present</p>
+      </div>
+      <ul>
+        <li>
+          Built REST APIs for the customer app, vendor app and admin dashboard of a Saudi wedding &amp; party marketplace:
+          bookings, orders, coupons, wallet payments, installment plans, seller packages and payouts.
+        </li>
+        <li>
+          Removed N+1 queries and repeated SQL on catalog, cart and order APIs; OneSignal push notifications, WebP image
+          optimization, Sanctum auth and Spatie role permissions.
+        </li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <p>
+          <span class="title">Nest.js · TypeScript · PostgreSQL</span> ·
+          <a href="https://github.com/gyoushy14/sahl-ecommerce-api">Ecommerce System</a>
+        </p>
+        <p class="date">Sep 2026</p>
+      </div>
+      <ul>
+        <li>
+          Ecommerce API with JWT access/refresh rotation, argon2 hashing, RBAC, idempotent payments behind a gateway
+          abstraction, and HMAC-verified webhooks with event de-duplication.
+        </li>
+        <li>
+          Transactional order placement with price snapshots and deadlock retry, keyset pagination without N+1; Dockerized,
+          Swagger-documented and covered by 50 unit + 49 e2e tests (Jest, Supertest).
+        </li>
+      </ul>
+    </div>
     <div class="entry">
       <div class="row">
         <p><span class="title">Node.js · Express · MongoDB</span> · E-Commerce Backend</p>
