@@ -8,15 +8,15 @@ const portfolio = {
     name: 'Mahmoud Mohamed',
     alias: 'Mahmoud Elgyuoshi',
     role: 'Backend Developer',
-    roles: ['Backend Developer', 'Laravel Expert', 'API Architect'],
+    roles: ['Backend Developer', 'Laravel Developer', 'Node.js Developer'],
     tagline: 'Building scalable systems, clean APIs, and reliable backends.',
     availability: 'Available for backend opportunities',
     summary:
-      'Backend Developer with 2+ years of hands-on experience designing and shipping scalable REST APIs and server-side systems using Laravel, Node.js, and MongoDB. Production experience across healthcare (MedicaSpace) and commercial platforms, with strong command of clean architecture, Design Patterns, and database optimization.',
+      'Backend Developer with 2+ years of hands-on experience designing and shipping scalable REST APIs and server-side systems using Laravel, Node.js, and MongoDB. Production experience across healthcare (MedicaSpace) and commercial platforms, with strong command of clean architecture, Design Patterns, and database optimization. Passionate about writing maintainable, well-structured code and translating business requirements into reliable technical solutions.',
     email: 'elgyuoshy@gmail.com',
-    phone: ['+201030897704' , ' || +201559469990'],
+    phone: '+201030897704',
     location: 'Suez, Egypt',
-    militaryStatus: 'Exempt from military service',
+    militaryStatus: 'Exempted from military service',
   },
 
   links: {
@@ -63,11 +63,11 @@ const portfolio = {
       lines: [
         { type: 'comment', text: '# whoami' },
         { type: 'command', text: 'mahmoud --stack' },
-        { type: 'output', text: 'Laravel · Node.js · MongoDB · MySQL' },
+        { type: 'output', text: 'Laravel · Node.js · Express · MongoDB · MySQL' },
         { type: 'command', text: 'mahmoud --focus' },
-        { type: 'output', text: 'REST APIs · Clean Architecture · SOLID' },
+        { type: 'output', text: 'REST APIs · Clean Architecture · Design Patterns' },
         { type: 'command', text: 'mahmoud --status' },
-        { type: 'output', text: 'Open to backend opportunities' },
+        { type: 'output', text: 'Backend Developer @ Sahl Solutions' },
         { type: 'command', text: 'mahmoud --loc' },
         { type: 'output', text: '@ Suez, Egypt' },
       ],
@@ -81,15 +81,15 @@ const portfolio = {
       label: 'Education',
       value: 'B.Sc. IT — New Cairo Technology University',
     },
-    { icon: 'Briefcase', label: 'Currently', value: 'Laravel Dev @ MedicaSpace' },
-    { icon: 'ShieldCheck', label: 'Military', value: 'Exempt from military service' },
+    { icon: 'Briefcase', label: 'Currently', value: 'Backend Developer @ Sahl Solutions' },
+    { icon: 'ShieldCheck', label: 'Military', value: 'Exempted' },
   ],
 
   stats: [
     { value: '2+', label: 'Years of experience' },
-    { value: '3+', label: 'Projects shipped' },
-    { value: '1', label: 'Production platform' },
-    { value: '5', label: 'Certifications' },
+    { value: '6', label: 'Projects shipped' },
+    { value: '3', label: 'Companies worked with' },
+    { value: '6', label: 'Certifications' },
   ],
 
   skills: [
@@ -117,8 +117,7 @@ const portfolio = {
       category: 'Tools',
       icon: 'Wrench',
       items: [
-        'Git',
-        'GitHub',
+        'Git & GitHub',
         'GitLab',
         'Postman',
         'Swagger',
@@ -138,12 +137,20 @@ const portfolio = {
 
   experience: [
     {
-      period: 'Dec 2024 – Present',
+      period: 'Oct 2026 – Present',
+      role: 'Backend Developer',
+      company: 'Sahl Solutions',
+      companyUrl: null,
+      description:
+        'Developing and maintaining backend systems and RESTful APIs, applying clean architecture and Design Patterns.',
+    },
+    {
+      period: 'Dec 2024 – Sep 2026',
       role: 'Laravel Backend Developer',
       company: 'MedicaSpace',
       companyUrl: null,
       description:
-        "Built and maintained RESTful APIs for a multi-sector medical networking platform (MedicaSpace) serving C2C, B2B, and B2C use cases — a production healthcare system at Soume Computing using Laravel with Modules & Service/Repository architecture.",
+        'Built and maintained RESTful APIs for a multi-sector medical networking platform serving C2C, B2B, and B2C use cases.',
     },
     {
       period: 'Sep 2025 – Oct 2025',
@@ -153,40 +160,63 @@ const portfolio = {
       description:
         'Delivered coding curriculum to students aged 6–18, strengthening instructional skills and technical communication.',
     },
-    {
-      period: 'Mar 2025 – May 2025',
-      role: 'Coding Instructor',
-      company: 'Black Horse Courses',
-      companyUrl: null,
-      description:
-        'Taught Python, OOP, data structures, and ML to diverse learners, improving student confidence and course completion rates.',
-    },
   ],
 
   projects: [
     {
+      id: 'ecommerce-backend',
       title: 'E-Commerce Backend',
-      description:
-        'Modular REST API with JWT auth, product management, order workflows, input validation, and error-handling middleware following OOP and MVC principles.',
-      stack: ['Node.js', 'Express', 'MongoDB'],
+      category: 'Backend',
+      type: 'Personal Project',
       period: 'Aug – Sep 2024',
-      githubUrl: 'https://github.com/gyoushy14',
+      description:
+        'Modular REST API with authentication, product management, and order workflows following OOP and MVC principles — built for production-ready reliability.',
+      highlights: [
+        'JWT-based authentication and protected routes',
+        'Product management and order workflows',
+        'Input validation and centralized error-handling middleware',
+        'Modular structure following OOP and MVC principles',
+      ],
+      tech: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'REST API', 'MVC'],
+      github: 'https://github.com/gyoushy14',
+      live: null,
+      featured: false,
     },
     {
+      id: 'freelance-backend-system',
       title: 'Freelance Backend System',
-      description:
-        'High-performance backend with RESTful APIs, scalable data models, and clean architecture. Delivered secure authentication, product CRUD, and deployment-ready configuration for a commercial client within 3 months.',
-      stack: ['Node.js', 'Express', 'MongoDB'],
+      category: 'Backend',
+      type: 'Freelance Project',
       period: 'Sep – Dec 2024',
-      githubUrl: 'https://github.com/gyoushy14',
+      description:
+        'High-performance backend for a commercial client with RESTful APIs, scalable data models, and clean architecture — delivered within a 3-month timeline.',
+      highlights: [
+        'Secure authentication and product CRUD',
+        'Scalable data models designed around access patterns',
+        'Clean architecture with deployment-ready configuration',
+      ],
+      tech: ['Node.js', 'Express.js', 'MongoDB', 'REST API', 'Clean Architecture'],
+      github: null,
+      live: null,
+      featured: false,
     },
     {
+      id: 'medicaspace',
       title: 'MedicaSpace (Production)',
+      category: 'Backend',
+      type: 'Professional Work',
+      period: 'Dec 2024 – Sep 2026',
       description:
-        'Multi-sector medical networking platform serving C2C, B2B, and B2C use cases. Built with Laravel Modules and Service/Repository architecture at Soume Computing.',
-      stack: ['Laravel', 'PHP', 'MySQL', 'Redis' , 'Unit testing' ," SOLID principles"],
-      period: 'Dec 2024 – Present',
-      githubUrl: null,
+        'Multi-sector medical networking platform serving C2C, B2B, and B2C use cases. Built and maintained its RESTful APIs with Laravel using a Service & Repository architecture.',
+      highlights: [
+        'RESTful APIs serving C2C, B2B, and B2C flows',
+        'Service & Repository Pattern with clean separation of concerns',
+        'Query optimization and unit-tested business logic',
+      ],
+      tech: ['Laravel', 'PHP', 'MySQL', 'Redis', 'Unit Testing', 'SOLID'],
+      github: null,
+      live: null,
+      featured: true,
     },
     {
       id: 'crud-redux-toolkit',
@@ -305,7 +335,7 @@ const portfolio = {
       icon: 'Award',
     },
     {
-      name: 'AICE AI & Real-World AI Solution Development',
+      name: 'AICE AI & real-world AI solution development',
       issuer: 'ALX Africa',
       icon: 'Bot',
     },
@@ -326,7 +356,7 @@ const portfolio = {
     },
     {
       id: 'ibm-git-github',
-      title: 'Getting Started with Git and GitHub',
+      name: 'Getting Started with Git and GitHub',
       issuer: 'IBM',
       platform: 'Coursera',
       authorizedBy: 'IBM',
